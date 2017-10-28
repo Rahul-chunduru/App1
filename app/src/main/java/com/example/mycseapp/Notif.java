@@ -25,9 +25,6 @@ public class Notif extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
         Intent notificationIntent = new Intent(context,MainActivity.class);
-
-        // Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
-
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
         stackBuilder.addParentStack(MainActivity.class);

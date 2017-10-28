@@ -13,8 +13,17 @@
     import com.google.firebase.database.FirebaseDatabase;
     import com.google.firebase.database.ValueEventListener;
 
+    /** This class represents the notes page
+     *
+     */
     public class Notes extends AppCompatActivity {
     private DatabaseReference data;
+
+        /**
+         * connect to the user's notes and load his notes.
+         * and give functionality to save button
+         * @param savedInstanceState
+         */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +32,7 @@
 
         final EditText e = findViewById(R.id.note);
         data = FirebaseDatabase.getInstance().getReference();
+        /** connect to user's notes in database and load it */
         data.child("Notes").child(MainActivity.Username).addValueEventListener(
                 new ValueEventListener() {
                     @Override
@@ -36,7 +46,7 @@
                     }
                 }
         );
-
+    /** on clicking save button , his notes get saved in database */
         Button save = findViewById(R.id.save);
         save.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

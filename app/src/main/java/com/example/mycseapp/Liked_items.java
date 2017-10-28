@@ -15,26 +15,40 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+/**
+ * This class represents the liked item page .
+ */
 public class Liked_items extends AppCompatActivity {
     private DatabaseReference mDatabase  ;
     private ArrayList<Eventclass> A = new ArrayList<>() ;
 
     Context con = this ;
     ListView set ;
+
+    /**
+     * Connect to events and the user's info in database.
+     * Get his intereseted items and load it.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liked_items);
         set = findViewById(R.id.interested) ;
-        /////////////connect to events
+        /** connect to events */
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Events") ;
-        //////////connected to the place where the interested events are stored
+        /** connected to the place where the interested events of the user are stored */
         DatabaseReference req = FirebaseDatabase.getInstance().getReference()
                 .child("Interested") ;
         req.child(MainActivity.Username).addChildEventListener(new ChildEventListener() {
-                    @Override
+            /**
+             * download the interested items
+             * @param dataSnapshot
+             * @param s
+             */
+            @Override
                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                        ///// download the interested item as done in events
+
                        Download(dataSnapshot.getKey() , 0);
                     }
 
@@ -61,7 +75,12 @@ public class Liked_items extends AppCompatActivity {
                     }
                 }) ;
     }
-    ////////Download event with id S and position(front or back ) depending on x
+
+    /**
+     * The same download function as in events
+     * @param S
+     * @param x
+     */
     public void Download(final String S , final int x ) {
         final Eventclass r = new Eventclass();
         mDatabase.child(S).addValueEventListener(new ValueEventListener() {

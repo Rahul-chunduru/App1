@@ -19,16 +19,24 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 /**
- * Created by sri on 10/14/17.
+ * This class represents the my accounts page.
  */
 
 public class Myaccount extends Fragment {
-
+    /**
+     * This creates a menu holder consisting of my accounts, notes, change password, username, background and
+     * password.
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.myaccount, container, false);
         ListView set = rootView.findViewById(R.id.my_account);
+        /** create the menu array and load id */
         final ArrayList<String> myacc = new ArrayList<>();
         myacc.add("Interested Items");
         myacc.add("My Notes") ;
@@ -40,6 +48,13 @@ public class Myaccount extends Fragment {
                 (getActivity(), android.R.layout.simple_list_item_1, myacc);
         set.setAdapter(myaccad);
         set.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            /**
+             * On click, the menu will respond on basis of what is selected.
+             * @param adapterView
+             * @param view
+             * @param i
+             * @param l
+             */
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String name = (String) adapterView.getItemAtPosition(i);

@@ -20,6 +20,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
+/** This class represents the register page
+ *
+ */
 public class Register extends AppCompatActivity {
     FirebaseAuth mAuth ;
     String TAG = "Register" ;
@@ -48,6 +51,11 @@ public class Register extends AppCompatActivity {
 
 
     }
+
+    /**
+     * Validates the form submited
+     * @return
+     */
     private boolean validateForm() {
         boolean valid = true;
         final EditText e = (EditText) findViewById(R.id.E);
@@ -70,8 +78,14 @@ public class Register extends AppCompatActivity {
 
         return valid;
     }
+
+    /**
+     * creates a new account with a particular email and password
+     * @param email
+     * @param password
+     */
     private void createAccount(String email, String password) {
-        // Create Account with the email name and password
+        /** Create Account with the email name and password */
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
