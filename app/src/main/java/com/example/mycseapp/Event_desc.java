@@ -218,7 +218,7 @@ public class Event_desc extends AppCompatActivity {
                 String name = dataSnapshot.getKey();
                 if (!(name.equals("Number"))) {
                     ArrayList<String> Comm = ChatActivity.getinfo(dataSnapshot.getValue().toString()) ;
-                    /** store a comment as an item object */
+                    /**store a comment as an item object */
                     Item n = new Item(Comm.get(0), Comm.get(1));
                     comments.add(n);
                     itemsAdapter.notifyDataSetChanged();
