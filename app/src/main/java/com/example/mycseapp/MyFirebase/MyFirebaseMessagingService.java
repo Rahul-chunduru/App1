@@ -22,7 +22,7 @@ import java.util.Map;
 import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 
 /**
- * Created by sri on 10/4/17.
+ Here the notifications recieved on android are managed
  */
 
 
@@ -32,28 +32,31 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    /**
+    
+    */
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
+        
+        //different types of messages are recieved 
 
         if (remoteMessage.getData().size() > 0) {
             Map<String, String> payload = remoteMessage.getData();
 
             if (payload.get("Type").equals("website")){
                 showNotification_website(payload);
+                //website tracking notifictaions
             }
             else
             if(payload.get("Type").equals("event"))
             {
                 showNotification(payload);
-            }
-            else
-                if(payload.get("Type").equals("course")){
-                    showNotification_course(payload);
-
-            }
+                //event notifications 
+            }            
             else
                 if(payload.get("Type").equals("non_grp")){
                     showNotification_noncourse(payload);
+                    non_course groups notifications
 
             }
 
@@ -127,6 +130,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         notificationManager.notify(0, notificationBuilder.build());
 
     }
+    
+    //use of Notification manager for displaying the notification 
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void showNotification_course(Map<String, String> payload) {
