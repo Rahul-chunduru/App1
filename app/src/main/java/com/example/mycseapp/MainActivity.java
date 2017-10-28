@@ -21,16 +21,23 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
+/** This class represents the login page */
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private static DatabaseReference mData ;
     Context con = this ;
-    public static String Ausername = "" ;/////////// The changable user name
-    public static String Username ="" ; /////////// The User Id invariant
-    public static String enumber = "" ; /////////// The events status of user.
+    public static String Ausername = "" ;/** The changable user name */
+    public static String Username ="" ; /**  The User Id invariant */
+    public static String enumber = "" ; /**  The events status of user. */
     private static final String TAG = "EmailPassword";
     private ProgressBar spinner;
+
+    /**
+     * gives functionality to login button, which
+     * checks via
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +89,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    /**
+     * signs in the user with email string and password string.
+     * @param email
+     * @param password
+     */
     private void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
         // [START sign_in_with_email]
@@ -119,14 +132,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-//////////////// check for internet connection
+    /**
+     * checks the avaliability of internet
+     * @return
+     */
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
-    /////////check for valid password submission
+
+    /**
+     * valiadates the form submitted.
+     * @return
+     */
     private boolean validateForm() {
         boolean valid = true;
         final EditText e = (EditText) findViewById(R.id.E);
