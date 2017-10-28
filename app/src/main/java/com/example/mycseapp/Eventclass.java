@@ -1,21 +1,33 @@
 package com.example.mycseapp;
 
 /**
- * Created by sri on 10/15/17.
+ This class represents an Event object.
  */
 
 public class Eventclass {
-    /////s - subject
     public  String s;
-    /////pos - know / unknown
+    /**
+     s - title of the event
+     */   
     public  int pos ;
-    /////des - description of event
+    /**
+     pos - defines whether the event is old or new
+     */    
     public  String des ;
-    ///////type - culture / sports
+    /**
+     des - event description
+     */    
     public  String type;
-   /////info - who posted it ?
+    /**
+     type - event type(cultural/sports)
+     */   
     public String  info ;
-    /////// the number with which it is stored
+    /**
+     info - who posted it? 
+     */    
     public String id ;
+    /**
+     id - event number
+     */
 
 }
