@@ -77,12 +77,13 @@ public class Event_desc extends AppCompatActivity {
 
             }
         });
-        ///////////////////////////Remind Button
+        /** Add a Remind Button */
         Button r = findViewById(R.id.remind)  ;
         r.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 LayoutInflater li = LayoutInflater.from(con);
+                /** get view promptsView */
                 final View promptsView = li.inflate(R.layout.remainder, null);
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
@@ -137,7 +138,7 @@ public class Event_desc extends AppCompatActivity {
         }
     );
 
-        //////////////////Like button
+        /** Add a Like button */
 
         final LikeButton likeButton = findViewById(R.id.likeButton) ;
         final DatabaseReference Ie = FirebaseDatabase.getInstance().getReference().child("Interested")
@@ -154,9 +155,9 @@ public class Event_desc extends AppCompatActivity {
               Ie.removeValue() ;
             }
         });
-        //////////
-        ///////// SET LIKE button
-        /////////get likability of the event
+        /** get like status of the event
+         * and set the like button
+         */
         DatabaseReference req = FirebaseDatabase.getInstance().getReference()
                 .child("Interested").child(MainActivity.Username) ;
         req.addChildEventListener(new ChildEventListener() {
@@ -201,8 +202,9 @@ public class Event_desc extends AppCompatActivity {
                mComment.child("com").push().child(MainActivity.Ausername).setValue(mes) ;
             }
         });
-        ////////////////////////
-        /////////////////////Comments //////////////////////////
+
+        /** load the Comments section by accessing database
+         */
         comments.clear();
         final chatadapter itemsAdapter =
                 new chatadapter(this, comments);
@@ -216,6 +218,7 @@ public class Event_desc extends AppCompatActivity {
                 String name = dataSnapshot.getKey();
                 if (!(name.equals("Number"))) {
                     ArrayList<String> Comm = ChatActivity.getinfo(dataSnapshot.getValue().toString()) ;
+                    /** store a comment as an item object */
                     Item n = new Item(Comm.get(0), Comm.get(1));
                     comments.add(n);
                     itemsAdapter.notifyDataSetChanged();
