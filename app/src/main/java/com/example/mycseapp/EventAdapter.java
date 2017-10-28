@@ -12,10 +12,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by sri on 10/14/17.
+ * This is used for list view in events
  */
 public class EventAdapter extends ArrayAdapter<Eventclass> {
-  //  private ArrayList<Item> dataSet;
+    /**
+     * array list image.
+     */
     private ArrayList<Eventclass> Image;
     Context mContext;
 
@@ -27,6 +29,15 @@ public class EventAdapter extends ArrayAdapter<Eventclass> {
 
 
     }
+
+    /**
+     * creates the view, sets the title , the poster info and
+     * pic corresponding to the type of post.
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -52,7 +63,7 @@ public class EventAdapter extends ArrayAdapter<Eventclass> {
             l.setText("Old");
         }
         // 4. Set the text for textView
-        ///////the message in an event
+        //the message in an event
         valueView.setText(Image.get(position).info + " posted a " + Image.get(position).type + " post");
         //////set picture according to the type of the post
         if(Image.get(position).type.equals("culture"))
@@ -60,7 +71,7 @@ public class EventAdapter extends ArrayAdapter<Eventclass> {
             I.setImageResource(R.drawable.culture);
         }
         else I.setImageResource(R.drawable.sports);
-        //////white background
+        //white background
         rowView.setBackgroundColor(
                 Color.argb(255, 255, 255, 255)) ;
 
