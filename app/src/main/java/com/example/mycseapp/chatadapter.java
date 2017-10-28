@@ -24,6 +24,15 @@ public class chatadapter extends ArrayAdapter<Item> {
         this.mContext = context;
         this.dataSet = itemsArrayList;
     }
+
+    /**
+     * getView create the view and sets text according to user sent
+     * and returns the view.
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 

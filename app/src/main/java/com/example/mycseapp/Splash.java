@@ -27,18 +27,25 @@ Context con = this ;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash2);
 
-        ////////get user details
+        /**
+         * get user details
+         */
+
         getUsername();
 
-        ////////add token for notifications
+        /**add token for notifications */
          token = FirebaseInstanceId.getInstance().getToken() ;
         FirebaseDatabase.getInstance().getReference().
                 child("User_keys").child(token).setValue("true")  ;
 
-        ////////////get schrodinger(the one that will trigger cloud functions when
-        ////////// a message is added in a group
+        /**get schrodinger(the one that will trigger cloud functions when
+         a message is added in a group */
         FirebaseDatabase.getInstance().getReference()
                 .child("Schrodinger").addValueEventListener(new ValueEventListener() {
+            /**
+             *
+             * @param dataSnapshot
+             */
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                Schrodinger =  dataSnapshot.getValue().toString() ;
@@ -50,13 +57,20 @@ Context con = this ;
             }
         });
 
-        /////////gateway to next ;
+        /**  and call the gateway function */
         gateway();
 
     }
+
+    /**
+     *
+     */
     public void gateway()
     {
-        //////////check if details are obtained.
+        /**check if details are obtained.
+         * if obtained , go to home activity, else
+         * re run the function
+         * */
         if(MainActivity.enumber.equals(""))
         {
             Handler h = new Handler( ) ;
@@ -75,7 +89,8 @@ Context con = this ;
         }
     }
 
-    ////////////ask for user details.
+    /** ask for user details and get user name and his event no.
+     *  */
     public void getUsername()
     {
         final String U = FirebaseAuth.getInstance().getCurrentUser().getUid() ;

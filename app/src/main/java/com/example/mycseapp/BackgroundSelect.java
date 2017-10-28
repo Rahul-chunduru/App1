@@ -32,9 +32,12 @@ public class BackgroundSelect extends AppCompatActivity {
             R.drawable.group,
             R.drawable.k
     };
-    /** \fn  protected void onCreate(Bundle savedInstanceState)
-     *  \brief set background name
-     *
+
+    /**
+     * On create , load images to a grid view.
+     * Set onclick functionality to grid view as generating a dialog box
+     * and give it's button's functionalities.
+     * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,7 @@ public class BackgroundSelect extends AppCompatActivity {
 
         setTitle("Choose Background");
         GridView gridView = (GridView) findViewById(R.id.grid_view);
-        /** Reference to background information */
+        /** Refer to database for his background. */
         final DatabaseReference Background = FirebaseDatabase.getInstance().getReference()
                 .child("Background").child(MainActivity.Username).child("Background") ;
         /** generate adapter array for dialog box  */
@@ -54,10 +57,18 @@ public class BackgroundSelect extends AppCompatActivity {
         gridView.setAdapter(new ImageAdapter(context, pics));
         /** add onItemclicklistener to grid view */
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            /**
+             * on click , a dialog box appears, with option to set the image as
+             * groups or as events background.
+             * @param adapterView
+             * @param view
+             * @param i
+             * @param l
+             */
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view,final int i, long l) {
                 LayoutInflater li = LayoutInflater.from(context);
-                /** <create view prompts.xml */
+                /** generate a view for dialog box */
                 View promptsView = li.inflate(R.layout.memberlist, null);
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                         context);
