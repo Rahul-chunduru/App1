@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/groupb"
+    tools:context="com.example.mycseapp.Event_desc"
+    tools:layout_editor_absoluteY="0dp"
+    tools:layout_editor_absoluteX="0dp">
+    <ImageView
+        android:id="@+id/Show"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:srcCompat="@android:drawable/ic_menu_help"
+        app:layout_constraintBottom_toTopOf="@+id/subgroupb"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="310dp"
+        android:layout_height="477dp"
+        android:background="@color/white"
+        android:id="@+id/subgroupb"
+        tools:context="com.example.mycseapp.Event_desc"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Show">
+
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="20dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="20dp" />
+
+
+
+
+        <TextView
+            android:id="@+id/imported"
+            android:layout_width="125dp"
+            android:layout_height="40dp"
+            android:layout_weight="0.32"
+            android:background="@color/white"
+            android:gravity="center"
+            android:padding="5dp"
+            android:paddingRight="10dp"
+            android:text="TextView"
+            android:textStyle="bold"
+
+            app:layout_constraintRight_toLeftOf="@+id/des"
+            app:layout_constraintLeft_toRightOf="@+id/des"
+            app:layout_constraintBottom_toTopOf="@+id/des"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/des"
+            android:layout_width="277dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.32"
+
+            android:gravity="center"
+            android:background="@drawable/back"
+            android:text="@string/Naruto"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.515"
+            app:layout_constraintVertical_bias="0.095" />
+
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="77dp"
+            android:layout_height="35dp"
+            android:background="@drawable/back"
+            android:backgroundTint="@color/white"
+            android:gravity="center"
+            android:text="Comments"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_bias="0.287"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="150dp"
+            android:layout_height="33dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="Interested ? Like it"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/des" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/postcomment"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@android:drawable/ic_menu_send"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintBottom_toTopOf="@+id/comment"
+            app:layout_constraintTop_toBottomOf="@+id/comments"
+            app:layout_constraintVertical_bias="0.046" />
+
+        <Button
+            android:layout_width="88dp"
+            android:layout_height="48dp"
+            android:id="@+id/remind"
+            android:text="Remind"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/textView4" />
+
+        <EditText
+            android:id="@+id/comment"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="Add comment"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.963"
+            app:layout_constraintRight_toLeftOf="@+id/postcomment"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline2"
+            app:layout_constraintGuide_begin="20dp"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteY="20dp"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline5"
+            app:layout_constraintGuide_begin="20dp"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="20dp" />
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline7"
+            app:layout_constraintGuide_begin="20dp"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="20dp" />
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline9"
+            app:layout_constraintGuide_begin="20dp"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteY="20dp"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <com.like.LikeButton
+            android:id="@+id/likeButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:anim_scale_factor="2"
+            app:circle_end_color="@color/colorAccent"
+            app:circle_start_color="@color/colorPrimary"
+            app:dots_primary_color="@color/colorAccent"
+            app:dots_secondary_color="@color/colorPrimary"
+            app:icon_size="25dp"
+            app:icon_type="Star"
+            app:is_enabled="true"
+            app:like_drawable="@drawable/thumb_on"
+            app:liked="false"
+            app:unlike_drawable="@drawable/thumb_off"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/textView5"
+            app:layout_constraintBottom_toTopOf="@+id/remind"
+            app:layout_constraintTop_toBottomOf="@+id/des"
+            tools:layout_editor_absoluteX="223dp" />
+
+        <ListView
+            android:id="@+id/comments"
+            android:layout_width="291dp"
+            android:layout_height="153dp"
+            android:nestedScrollingEnabled="true"
+            android:transcriptMode="alwaysScroll"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/comment"
+            app:layout_constraintTop_toBottomOf="@+id/remind"
+            tools:layout_editor_absoluteY="427dp" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>
+</ScrollView>

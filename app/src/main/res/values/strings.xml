@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Mycseapp</string>
+    <string name="title_activity_home">Home</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="Naruto">A land of remarkable diversity – from ancient traditions and artistic heritage to magnificent landscapes and culinary creations – India will ignite your curiosity,
+        shake your senses and warm your soul.
+   , shake your senses and warm your soul.</string>
+    <string-array name="post_type">
+        <item>Type-of-post</item>
+        <item>culture</item>
+        <item>sports</item>
+    </string-array>
+    <string name="post">Type of Post</string>
+
+</resources>

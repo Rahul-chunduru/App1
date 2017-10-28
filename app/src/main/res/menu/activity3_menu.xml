@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/new_member"
+        android:title="New Member" />
+    <item android:id="@+id/users"
+        android:title="Users" />
+    <item android:id="@+id/Add_Url"
+        android:title="Change Url" />
+    <item android:id="@+id/Check_Content"
+        android:title="Check Url content" />
+
+    <item android:id="@+id/go_to"
+        android:title="Visit Url" />
+    <item android:id="@+id/back"
+        android:title="Back" />
+
+</menu>
