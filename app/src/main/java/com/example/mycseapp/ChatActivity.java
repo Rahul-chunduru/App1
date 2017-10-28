@@ -44,6 +44,9 @@ import java.util.Map;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
+/**
+ * This class represents the chat activity page
+ */
 public class ChatActivity extends AppCompatActivity {
 
 
@@ -72,7 +75,7 @@ public class ChatActivity extends AppCompatActivity {
         Intent i = getIntent();
         S = i.getStringArrayExtra(EXTRA_MESSAGE);
         String token = FirebaseInstanceId.getInstance().getToken();
-    /////setBackground
+    /** setBackground for events */
 
         FirebaseDatabase.getInstance().getReference().child("Background")
                 .child(MainActivity.Username).child("Background").child("g").addValueEventListener(new ValueEventListener() {
@@ -88,20 +91,19 @@ public class ChatActivity extends AppCompatActivity {
 
             }
         });
-///////////////
-        //set group name and url reference
+        /** set group name and url reference */
         setTitle(S[0]);
 
-        //set user name
+        /** set user name */
         Username = MainActivity.Ausername;
 
-        ///////////Adapter , source and list view for chat.
+        /** Adapter , source and list view for chat. */
         final ArrayList<Item> h = new ArrayList<>();
         final chatadapter itemsAdapter =
                 new chatadapter(this, h);
         final ListView set = (ListView) findViewById(R.id.mobile_list);
 
-        /////////Sending text and button
+        /** Sending text and button */
         final EditText get = findViewById(R.id.E2);
         get.setOnClickListener(new View.OnClickListener() {
 
@@ -134,7 +136,7 @@ public class ChatActivity extends AppCompatActivity {
                 // FAB Action goes here
             }
         });
-        ////////////Connect to database.
+        /** Connect to database. */
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Group_Chat").child(S[0]);
         mUrlbase = FirebaseDatabase.getInstance().getReference().child("Groups").child(S[0]).child("Url");
         mDatabase.child("Number").child("number").addValueEventListener(new ValueEventListener() {
