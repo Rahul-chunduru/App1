@@ -32,13 +32,15 @@ public class BackgroundSelect extends AppCompatActivity {
             R.drawable.group,
             R.drawable.k
     };
+    /** \fn  protected void onCreate(Bundle savedInstanceState)
+     *  \brief set background name
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_background_select);
-        /** set background name
-         *
-         */
+
         setTitle("Choose Background");
         GridView gridView = (GridView) findViewById(R.id.grid_view);
         /** Reference to background information */

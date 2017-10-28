@@ -26,6 +26,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+/** this class represents the posting page for an event
+ *
+ */
 public class Event_posting extends AppCompatActivity {
     String number ;
     private Spinner s1 ;
@@ -35,17 +38,25 @@ public class Event_posting extends AppCompatActivity {
     Bitmap N  = null;
     private DatabaseReference mDatabase  ;
 
+    /**
+     * On creation, give functionality to post and upload buttons.
+     * update the event no in database and push the information of event
+     * to database.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_posting);
-        /////////reference to the events in database
+        /** create reference to the events in database */
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Events");
         mStorageRef = FirebaseStorage.getInstance().getReference();
         s1 = findViewById(R.id.type_p) ;
-        //////////upload button
+        /** add functionality to upload button */
         FloatingActionButton b1 = findViewById(R.id.upload);
-        //////on hitting the upload photo button
+        /** on hitting the upload photo button, app should connect to gallery
+         *  and set the selected into the imageView object
+         * */
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +69,7 @@ public class Event_posting extends AppCompatActivity {
 
             }
         });
-        /////////get number from event's page
+        /** get number from event's page so as to update the events*/
         mDatabase.child("Number").child("number").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -73,7 +84,7 @@ public class Event_posting extends AppCompatActivity {
        final  EditText des = (EditText) findViewById(R.id.description) ;
         final EditText til = (EditText) findViewById(R.id.til) ;
         Button b2 = (Button) findViewById(R.id.post);
-        //////////add functionality to post button
+        /** add functionality to post button */
         b2.setOnClickListener(new View.OnClickListener() {
                                   @Override
                                   public void onClick(View view) {
@@ -85,7 +96,10 @@ public class Event_posting extends AppCompatActivity {
                                               int n = Integer.parseInt(number);
                                               n++;
                                               number = Integer.toString(n);
-                                              //////add event to database
+                                              /*! update event no in database */
+                                              /** add the event to database
+                                               *
+                                               */
                                               mDatabase.child(number).child("text").setValue(d);
                                               mDatabase.child(number).child("By").setValue(MainActivity.Ausername);
                                               mDatabase.child(number).child("type").setValue(ty);
@@ -95,7 +109,8 @@ public class Event_posting extends AppCompatActivity {
                                                   mDatabase.child("Number").child("number").setValue(number);
                                                   Event_posting.super.onBackPressed();
                                               } else {
-                                                  // add image to database
+                                                  /** add image to database  if it has one
+                                                   * */
                                                   StorageReference filepath = mStorageRef.child("Events").child(number);
                                                   filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                                       @Override
@@ -118,8 +133,14 @@ public class Event_posting extends AppCompatActivity {
 
     }
 
+    /**
+     * This function gets gets the selected image to gallery and
+     * convert it to bitmap
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
-    ////////////on hitting the upload photo button
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 

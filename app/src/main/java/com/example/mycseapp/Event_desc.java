@@ -45,6 +45,9 @@ import java.util.Calendar;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
+/** This class represents the description page about
+ * an event
+ */
 public class Event_desc extends AppCompatActivity {
      ArrayList<Item> comments = new ArrayList<>();
     Context con  = this ;
@@ -52,6 +55,9 @@ public class Event_desc extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_desc);
+        /** from calling intent , get the id of the
+         * event needed to be downloaded
+         */
         Intent i = getIntent() ;
         final String id = i.getStringExtra(EXTRA_MESSAGE) ;
         TextView t = findViewById(R.id.des) ;
@@ -62,7 +68,7 @@ public class Event_desc extends AppCompatActivity {
         ListView com = findViewById(R.id.comments) ;
         final DatabaseReference mEvent = FirebaseDatabase.getInstance().getReference().child("Events").child(id) ;
         final DatabaseReference mComment = FirebaseDatabase.getInstance().getReference().child("Eventcom").child(id) ;
-        //////////////set Background
+        /** set Background of the page by connecting to database */
         FirebaseDatabase.getInstance().getReference().child("Background")
                 .child(MainActivity.Username).child("Background").child("e").addValueEventListener(new ValueEventListener() {
             @Override
@@ -120,7 +126,7 @@ public class Event_desc extends AppCompatActivity {
                                         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
      alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 20000, pendingIntent);
-                                    //    alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+
 
                                     }
                                 })
@@ -189,8 +195,6 @@ public class Event_desc extends AppCompatActivity {
 
             }
         }) ;
-
-        /////////////////////////////////
         final EditText s = findViewById(R.id.comment) ;
         /////////set the post button
         FloatingActionButton post = findViewById(R.id.postcomment) ;
@@ -250,7 +254,7 @@ public class Event_desc extends AppCompatActivity {
             comments.add(new Item("" , "Be the first to comment")) ;
         }
     com.setAdapter(itemsAdapter);
-        ////////////Download the image
+        /** Download the image of the event to download */
         try{
         StorageReference dwn = FirebaseStorage.getInstance().getReferenceFromUrl("gs://mycseapp.appspot.com/Events" ).child(id);
         final File localFile = File.createTempFile("images", "jpg");
@@ -276,20 +280,12 @@ public class Event_desc extends AppCompatActivity {
 
                             }
                         }) ;
-
-
-
-                        // Successfully downloaded data to local file
-                        // ...
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
                 Toast.makeText(getApplicationContext(), "Download Failed", Toast.LENGTH_LONG).show();
 
-
-                // Handle failed download
-                // ...
             }
         });
     } catch (IOException e) {
