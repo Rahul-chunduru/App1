@@ -13,13 +13,12 @@ import android.support.annotation.RequiresApi;
 import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 
 /**
- * Created by sri on 10/26/17.
+ This class is for sending notifications when remainder is called
  */
 
 public class Notif extends BroadcastReceiver {
 
-
-    //@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -31,17 +30,14 @@ public class Notif extends BroadcastReceiver {
         stackBuilder.addNextIntent(notificationIntent);
 
         PendingIntent pendingIntent = stackBuilder.getPendingIntent(100, FLAG_UPDATE_CURRENT);
-
-        //NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
-
+        
         Notification notification = new Notification.Builder(context)
                 .setContentTitle("REMAINDER")
                 .setContentText("FOR THE POST")
                 .setTicker("New Message Alert!")
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentIntent(pendingIntent).build();
-
-        //NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        
         notificationManager.notify(0, notification);
 
     }
