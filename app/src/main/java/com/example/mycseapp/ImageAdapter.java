@@ -8,7 +8,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 /**
- * Created by sri on 10/22/17.
+ * This adapter will be used for grid view
  */
 
 public class ImageAdapter extends BaseAdapter {
