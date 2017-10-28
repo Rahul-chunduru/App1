@@ -34,11 +34,11 @@ public class Home extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
+        /** Create the adapter that will return a fragment for each of the three
+        * primary sections of the activity. */
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-        // Set up the ViewPager with the sections adapter.
+        /**  Set up the ViewPager with the sections adapter. */
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
@@ -57,12 +57,18 @@ public class Home extends AppCompatActivity {
             super(fm);
         }
 
+        /**
+         *   getItem is called to instantiate the fragment for the given page.
+         Return a PlaceholderFragment (defined as a static inner class below).
+         * @param position
+         * @return
+         */
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
+            /** getItem is called to instantiate the fragment for the given page.
+             Return a PlaceholderFragment (defined as a static inner class below). */
             switch (position) {
-                ///// place events , group  , my account tab in that order.
+                /** place events , group  , my account tab in that order. */
                 case 1:
                     Groups x = new Groups();
 
@@ -82,16 +88,20 @@ public class Home extends AppCompatActivity {
             }
         }
 
+        /**
+         *  return total no. of pages
+         * @return
+         */
         @Override
         public int getCount() {
-            // Show 3 total pages.
+            /** Show 3 total pages. */
             return 3;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
-                /////////Names for the tab.
+                /** place names for the tabs*/
                 case 0:
                     return "Events";
                 case 1:
@@ -102,6 +112,10 @@ public class Home extends AppCompatActivity {
             return null;
         }
     }
+
+    /**
+     * Overide to go directly to login page
+     */
     @Override
     public void onBackPressed()
     {

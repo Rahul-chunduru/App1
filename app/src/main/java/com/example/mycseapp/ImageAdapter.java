@@ -14,7 +14,7 @@ import android.widget.ImageView;
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
 
-    // Keep all Images in array
+    /** Keep all Images in array*/
     public static Integer[] mThumbIds = {
 
 
@@ -41,8 +41,14 @@ public class ImageAdapter extends BaseAdapter {
         return 0;
     }
 
+    /**
+     *  getView controls the layout of the grid view
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @Override
-    /////////control's the layout of the image
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView = new ImageView(mContext);
         imageView.setImageResource(mThumbIds[position]);
