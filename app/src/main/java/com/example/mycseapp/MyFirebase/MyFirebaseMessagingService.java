@@ -23,6 +23,7 @@ import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 
 /**
  Here the notifications recieved on android are managed
+ different types of messages are recieved 
  */
 
 
@@ -33,7 +34,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     /**
-    
+    website tracking notifictaions
+    event notifications
+    non_course groups notifications    
     */
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -65,6 +68,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     /**
+    use of Notification manager for displaying the notification
      * for showing the event notifications
      * @param payload
      */
@@ -115,10 +119,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
 
 
-
-//        String[] A = {payload.get("grp_name"),"abc"};
-//        notificationIntent.putExtra(EXTRA_MESSAGE,A);
-
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         stackBuilder.addParentStack(MainActivity.class);
         stackBuilder.addNextIntent(notificationIntent);
@@ -138,31 +138,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     }
     
-    //use of Notification manager for displaying the notification 
-
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    private void showNotification_course(Map<String, String> payload) {
-
-        Intent notificationIntent = new Intent(this,MainActivity.class);
-
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        stackBuilder.addParentStack(MainActivity.class);
-        stackBuilder.addNextIntent(notificationIntent);
-        PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, FLAG_UPDATE_CURRENT);
-
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle(payload.get("grp_name"))
-                .setContentText(payload.get("text"))
-                .setAutoCancel(true)
-                .setContentIntent(pendingIntent);
-        // .setSound(defaultSoundUri);
-
-        NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-
-        notificationManager.notify(0, notificationBuilder.build());
-
-    }
+ 
+ 
+/**
+     * for showing noncourse group notifications
+     * @param payload
+     */
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void showNotification_noncourse(Map<String, String> payload) {
