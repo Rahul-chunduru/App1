@@ -56,7 +56,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             else
                 if(payload.get("Type").equals("non_grp")){
                     showNotification_noncourse(payload);
-                    non_course groups notifications
+                    //non_course groups notifications;
 
             }
 
@@ -64,7 +64,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
     }
 
-
+    /**
+     * for showing the event notifications
+     * @param payload
+     */
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void showNotification(Map<String, String> payload) {
 
@@ -90,10 +93,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
 
+    /**
+     * for showing website tracking notifications
+     * @param payload
+     */
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void showNotification_website(Map<String, String> payload) {
         Intent notificationIntent = new Intent("android.intent.action.MAIN");
-        String url = "https://www.cse.iitb.ac.in/~pavant/";
+        String url = "https://www.cse.iitb.ac.in/saiganesh/test.html";
         try {
 
             notificationIntent.setComponent(ComponentName.unflattenFromString("com.android.chrome/com.android.chrome.Main"));
